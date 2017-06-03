@@ -1,0 +1,3 @@
+ This project is a rest api about creating projects and dynamically hubs for storing project data.
+When a user logs in, he/she has an option of requesting project to the admin by sending project name to the admin.When admin logs, he can give grant to project, add new templates, assign author to template as well modify templates.
+While a simple user has only power to add user to his/her project and modify project data.

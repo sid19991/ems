@@ -9,6 +9,7 @@ var auth=require('../modules/auth');
 var router=require('express').Router();
 
 var project=require('../models/project');
+//api for adding new data to hub
 router.post('/addnewdata',auth.auth,auth.checkProjectToken,function(req,res){
 	var data={
 		d:req.body.d,
@@ -25,7 +26,8 @@ router.post('/addnewdata',auth.auth,auth.checkProjectToken,function(req,res){
 		}
 	})
 })
-router.post('/addDataFromFile',function(req,res){
+
+/*router.post('/addDataFromFile',function(req,res){
 	console.log(req.files);
 	res.send("testing");
 	// var stream=fs.createReadStream(req.files.data.path.toString());
@@ -42,7 +44,8 @@ router.post('/addDataFromFile',function(req,res){
 	// 		res.end();
 	// 	})
 		
-	})
+	})*/
+//api for adding new type to project
 router.post('/addnewtype/:id',auth.auth,auth.checkProjectToken,function(req,res){
 	console.log(req.body);
 	hub.findById(req.projectdecode.hubname,req.params.id,function(err,result){
@@ -84,6 +87,7 @@ router.post('/addnewtype/:id',auth.auth,auth.checkProjectToken,function(req,res)
 		}
 	)
 })
+//api for adding new category to hub
 router.post('/addnewcategory/:id',auth.auth,auth.checkProjectToken,function(req,res){
 	console.log(req.body);
 	hub.findById(req.projectdecode.hubname,req.params.id,function(err,result){
@@ -125,6 +129,7 @@ router.post('/addnewcategory/:id',auth.auth,auth.checkProjectToken,function(req,
 		}
 	)
 })
+//api for updating data to project
 router.post('/updatedata/:id',auth.auth,auth.checkProjectToken,function(req,res){
 	hub.findById(req.projectdecode.hubname,req.params.id,function(err,result){
 		if(err){
@@ -144,6 +149,7 @@ router.post('/updatedata/:id',auth.auth,auth.checkProjectToken,function(req,res)
 		}
 	})
 })
+//api for getting live of project so that user can acces hub data by providing live token
 router.get('/getLiveToken',auth.auth,auth.checkProjectToken,function(req,res){
 	project.projects.findById(req.projectdecode.hubname,function(err,project){
 		if(!project.livetoken)
@@ -168,6 +174,7 @@ router.get('/getLiveToken',auth.auth,auth.checkProjectToken,function(req,res){
 		}
 	})
 })
+//api for getting hub data from live token
 router.get('/getDataWebsite',auth.auth,auth.checkProjectToken,function(req,res){
 	var token=req.body.livetoken || req.headers['livetoken']
 	if(token){

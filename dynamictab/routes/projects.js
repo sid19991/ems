@@ -5,6 +5,7 @@ var hub=require('../models/hub');
 var template=require('../models/template');
 var project=require('../models/project');
 var jwt=require('jsonwebtoken');
+//api for getting templates assigned for this project
 router.get('/getMyTemplate',auth.auth,auth.checkProjectToken,function(req,res){
 	project.projects.findById(req.projectdecode.hubname).populate('template').exec(function(err,template){
 		if(err){
@@ -16,6 +17,7 @@ router.get('/getMyTemplate',auth.auth,auth.checkProjectToken,function(req,res){
 		}
 	})
 })
+//api for adding new user to project
 router.post('/addNewUser',auth.auth,auth.checkProjectToken,function(req,res){
 	project.projects.findById(req.projectdecode.hubname,function(err,project){
 		if(err)
@@ -56,6 +58,7 @@ router.post('/addNewUser',auth.auth,auth.checkProjectToken,function(req,res){
 		}
 	})
 })
+//api for deactivating project
 router.get('/deactivateproject',auth.auth,auth.checkProjectToken,function(req,res){
 	project.projects.findById(req.projectdecode.hubname,function(err,project){
 		if(err)
@@ -83,6 +86,7 @@ router.get('/deactivateproject',auth.auth,auth.checkProjectToken,function(req,re
 		}
 	})
 })
+//api for activating project
 router.get('/activateproject',auth.auth,auth.checkProjectToken,function(req,res){
 	project.projects.findById(req.projectdecode.hubname,function(err,project){
 		if(err){
@@ -109,6 +113,7 @@ router.get('/activateproject',auth.auth,auth.checkProjectToken,function(req,res)
 		}
 	})
 })
+//api for deleting data from the project
 router.get('/deletedata/:id',auth.auth,auth.checkProjectToken,function(req,res){
 	hub.delete(req.projectdecode.hubname,req.params.id,function(err,result){
 		if(err){

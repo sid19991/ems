@@ -1,3 +1,4 @@
+//function for verifying token and decoding the data from the token.
 var router={};
 var jwt=require('jsonwebtoken');
 router.auth =function(req,res,next){
@@ -22,6 +23,7 @@ router.auth =function(req,res,next){
 		res.status(500).send('no token');
 	}
 }
+//function for verifying project token
 router.checkProjectToken=function(req,res,next){
 	var projectToken = req.body.projecttoken || req.headers['projecttoken'];
 	console.log(projectToken);
