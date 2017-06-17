@@ -1,0 +1,10 @@
+body{
+	background: #4044C0;
+}
+.form{
+	background:#FFFFFF;
+	width:40%;
+	border-radius:5px;
+	float:left;
+	margin:5%;
+}
