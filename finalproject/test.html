@@ -1,0 +1,562 @@
+<html>
+    <head>
+        <title>
+            Document for facebook retrive places and events
+        </title>
+    </head>
+    <body>
+        <table border = 1>
+           
+            <td>
+                API url
+            </td>
+            <td>
+                API method
+            </td>
+            <td>
+                API description
+            </td>
+            <td>
+                API params in url
+            </td>
+            <td>
+                API parameters in body
+            </td>
+            <td>
+                functions used
+            </td>
+            <td>
+                testing status
+            </td>
+            <tr>
+                <td>
+                    '/insertCity'
+                </td>
+                <td>
+                    get
+                </td>
+                <td>
+                    inserts city and its center into accounts collection(Uses googlemaps api to find center)
+                </td>
+                <td>
+                    city
+                </td>
+                <td>
+                    Null
+                </td>
+                <td>
+                    google.getCenter for getting center and insertAccount for inserting data
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/get'
+                </td>
+                <td>
+                    get
+                </td>
+                <td>
+                    gets the data of place or event from database using facebook id
+                </td>
+                <td>
+                    Hubname and facebook id
+                </td>
+                <td>
+                    Null
+                </td>
+                <td>
+                    retriveById for retrieving data from the database
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/getByZip'
+                </td>
+                <td>
+                    get
+                </td>
+                <td>
+                    gets the data from facebook graph api using city zip code.
+                </td>
+                <td>
+                    cityzip
+                </td>
+                <td>
+                    Null
+                </td>
+                <td>
+                    google.getCenter for finding center and facebook graph api for retrieving data.
+                </td>
+                <td>
+                    Failed
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/area/insertArea'
+                </td>
+                <td>
+                    post
+                </td>
+                <td>
+                    inserts area into account
+                </td>
+                <td>
+                    Null
+                </td>
+                <td>
+                    accountid, area
+                </td>
+                <td>
+                    findById for retrieving data and save for saving the updated data.
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/area/getArea'
+                </td>
+                <td>
+                    get
+                </td>
+                <td>
+                    get the information of the area
+                </td>
+                <td>
+                    areaid, accountid
+                </td>
+                <td>
+                    Null
+                </td>
+                <td>
+                    findbyId for getting data.
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/area/removeArea'
+                </td>
+                <td>
+                    get
+                </td>
+                <td>
+                    Removes area from account
+                </td>
+                <td>
+                    areaid, accountid
+                </td>
+                <td>
+                    Null
+                </td>
+                <td>
+                    findById for getting data and splice for removing area.
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/area/removeArea'
+                </td>
+                <td>
+                    post
+                </td>
+                <td>
+                    Update an inserted area
+                </td>
+                <td>
+                    areaid, accountid
+                </td>
+                <td>
+                    area
+                </td>
+                <td>
+                    findById for getting data and save for saving updates
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/account/'
+                </td>
+                <td>
+                    post
+                </td>
+                <td>
+                    Validates the data and creates account
+                </td>
+                <td>
+                    Null
+                </td>
+                <td>
+                    username, password, center, radius, area
+                </td>
+                <td>
+                    find for validating and save for inserting data.
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/account/updateAccount/username'
+                </td>
+                <td>
+                    post
+                </td>
+                <td>
+                    Updates the username if proivided username is valid
+                </td>
+                <td>
+                    accountid
+                </td>
+                <td>
+                    usernmae
+                </td>
+                <td>
+                    findbyId for retrieving data and save for saving updated result
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/account/updateAccout/password'
+                </td>
+                <td>
+                    post
+                </td>
+                <td>
+                    Updates the password if provided password is valid
+                </td>
+                <td>
+                    accountid
+                </td>
+                <td>
+                    password
+                </td>
+                <td>
+                    findById for retrieving data and save for saving updated result
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/data/getEvents'
+                </td>
+                <td>
+                    post
+                </td>
+                <td>
+                    retrieves the city from database and finds the events around the city
+                </td>
+                <td>
+                    city
+                </td>
+                <td>
+                    distance
+                </td>
+                <td>
+                    retrieveAccount for retrieving data and facebookgetKeyandgetEvents for retrieving events.
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/data/getPlaces'
+                </td>
+                <td>
+                    post
+                </td>
+                <td>
+                    retrieves the city from database and finds the places
+                </td>
+                <td>
+                    city
+                </td>
+                <td>
+                    distance
+                </td>
+                <td>
+                    retrieveAccount for retrieving data and facebookgetKeyandgetPlaces for retrieving places
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/hub/getPlaces'
+                </td>
+                <td>
+                    post
+                </td>
+                <td>
+                    Same as data/getPlaces api.
+                </td>
+                <td>
+                    city
+                </td>
+                <td>
+                    distance
+                </td>
+                <td>
+                    Same as data/getPlaces api
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/hub/getPlaces'
+                </td>
+                <td>
+                    post
+                </td>
+                <td>
+                    Same as data/getPlaces api.
+                </td>
+                <td>
+                    city
+                </td>
+                <td>
+                    distance
+                </td>
+                <td>
+                    Same as data/getPlaces api
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/hub/addNewPlace'
+                </td>
+                <td>
+                    post
+                </td>
+                <td>
+                    adds new place.
+                </td>
+                <td>
+                    hubname
+                </td>
+                <td>
+                    place
+                </td>
+                <td>
+                    insertInfo for inserting data
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/hub/addNewEvent'
+                </td>
+                <td>
+                    post
+                </td>
+                <td>
+                    adds new event to database.
+                </td>
+                <td>
+                    city
+                </td>
+                <td>
+                    event
+                </td>
+                <td>
+                    insertInfo for inserting data
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/hub/blockPost'
+                </td>
+                <td>
+                    get
+                </td>
+                <td>
+                    blocks post.
+                </td>
+                <td>
+                    hubname, facebookid
+                </td>
+                <td>
+                    null
+                </td>
+                <td>
+                    retrieveById for retrieving and save for updating
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/hub/unblockPost'
+                </td>
+                <td>
+                    get
+                </td>
+                <td>
+                    unblocks post.
+                </td>
+                <td>
+                    hubname, facebookid
+                </td>
+                <td>
+                    null
+                </td>
+                <td>
+                    retrieveById for retrieving and save for updating
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/hub/approvePost'
+                </td>
+                <td>
+                    get
+                </td>
+                <td>
+                    approves post.
+                </td>
+                <td>
+                    hubname, facebookid
+                </td>
+                <td>
+                    null
+                </td>
+                <td>
+                    retrieveById for retrieving and save for updating
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/hub/unapprovePost'
+                </td>
+                <td>
+                    get
+                </td>
+                <td>
+                    unapproves post.
+                </td>
+                <td>
+                    hubname, facebookid
+                </td>
+                <td>
+                    null
+                </td>
+                <td>
+                    retrieveById for retrieving and save for updating
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/hub/pinPost'
+                </td>
+                <td>
+                    get
+                </td>
+                <td>
+                    pins post.
+                </td>
+                <td>
+                    hubname, facebookid
+                </td>
+                <td>
+                    null
+                </td>
+                <td>
+                    retrieveById for retrieving and save for updating
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/hub/unpinPost'
+                </td>
+                <td>
+                    get
+                </td>
+                <td>
+                    unpins post.
+                </td>
+                <td>
+                    hubname, facebookid
+                </td>
+                <td>
+                    null
+                </td>
+                <td>
+                    retrieveById for retrieving and save for updating
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    '/xyz'
+                </td>
+                <td>
+                    get
+                </td>
+                <td>
+                    retrieves all places and events around user center and radius and also around area center and radius.
+                </td>
+                <td>
+                    Null
+                </td>
+                <td>
+                    Null
+                </td>
+                <td>
+                    autoProcess module for all the processes and main manager for controlling the flow of processes.
+                </td>
+                <td>
+                    Done
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
