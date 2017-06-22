@@ -1,0 +1,17 @@
+{
+  "name": "geocode",
+  "version": "1.0.0",
+  "description": "geocoding",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "siddharth pogul",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "node-geocoder": "^3.16.0",
+    "request": "^2.81.0"
+  }
+}
